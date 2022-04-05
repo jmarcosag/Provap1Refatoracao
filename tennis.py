@@ -5,16 +5,18 @@ class Game:
         self.player2Name = player2Name
         self.p1points = 0
         self.p2points = 0
-
-
-
         
+    def isP1(self,playerName):
+        if self.playerName = player1Name:
+            return true
+
+    def isP2(self,playerName):
+        if self.playerName = player2Name:
+            return true
+    
     def won_point(self, playerName):
-        
-        if playerName == self.player1Name:
-            self.P1Score()
-        else:
-            self.P2Score()
+        if isP1(playerName) return P1Score()
+        if isP2(playerName) return P2Score()
     
     def score(self):
         result = ""
@@ -94,9 +96,6 @@ class Game:
         for i in range(number):
             self.P2Score()
     
-    def AddScore(self, playerName):
-        playerName.
-
     def P1Score(self):
         self.p1points +=1
     
