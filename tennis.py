@@ -1,8 +1,5 @@
 # -*- coding: utf-8 -*-
-class Game:
-    
-    minPoints= 0  
-    
+class Game:    
     def __init__(self, player1Name, player2Name):
         self.player1Name = player1Name
         self.player2Name = player2Name
@@ -10,12 +7,12 @@ class Game:
         self.p2points = 0
     
     def isP1(self,playerName):
-        if self.playerName = player1Name:
-            return true
+        if self.player1Name == playerName:
+            return True
 
     def isP2(self,playerName):
-        if self.playerName = player2Name:
-            return true
+        if self.player2Name == playerName:
+            return True
 
     def getP1Points(self):
         return self.p1points
@@ -23,87 +20,110 @@ class Game:
     def getP2Points(self):
         return self.p2points
         
-    def isLove(points):
+    def isLove(self,points):
         love = 0
         if points == love:
-            return true
+            return True
 
-    def isFifteen(points):
+    def isFifteen(self,points):
         fifteen = 1
         if points == fifteen:
-            return true
+            return True
 
-    def isThirty(points):
+    def isThirty(self,points):
         thirty = 2
         if points == thirty:
-            return true
+            return True
 
-    def isForty(points):
+    def isForty(self,points):
         forty = 3
         if points == forty:
-            return true
+            return True
         
     def isDeuce(self):
         thirty = 2
         if self.p1points == self.p2points and self.p1points > thirty:
-            return true
+            return True
 
     def isScore(self):
         setpoint = 3
         if self.p1points == self.p2points and self.p1points < setpoint:
-            return true
+            return True
         
     def won_point(self, playerName):
-        if isP1(playerName) return P1Score()
-        if isP2(playerName) return P2Score()
+        if self.isP1(playerName): return self.P1Score()
+        else: self.P2Score()
     
     def score(self):
         result = ""
         P1res = ""
         P2res = ""
         
-        if isScore():
-            if isLove(p1points) return result = "Love"
-            if isFifteen(p1points) return result = "Fifteen"
-            if isThirty(p1points) return result = "Thirty"
-            return result += "-All"
-        else isDeuce() return result = "Deuce"
+        if self.isScore():
+            if self.isLove(self.p1points): return result == "Love"
+            if self.isFifteen(self.p1points): return result == "Fifteen"
+            if self.isThirty(self.p1points): return result == "Thirty"
+            else: return result + "-All"
+
+        if self.isDeuce(): return result == "Deuce"
         
         if (self.p1points > 0 and self.p2points==0):
             P2res = "Love"
-            if isFifteen(p1points) return P1res = "Fifteen"
-            if isThirty(p1points) return P1res = "Thirty"
-            if isForty(p1points) return P1res = "Forty"
-            return result = P1res + "-" + P2res
+            if self.isFifteen(self.p1points): return P1res == "Fifteen"
+            if self.isThirty(self.p1points): return P1res == "Thirty"
+            if self.isForty(self.p1points): return P1res == "Forty"
+            return result == P1res + "-" + P2res
             
         if (self.p2points > 0 and self.p1points==0):
             P1res = "Love"
-            if isFifteen(p2points) return P2res = "Fifteen"
-            if isThirty(p2points) return P2res = "Thirty"
-            if isForty(p2points) return P2res = "Forty"
-            return result = P1res + "-" + P2res
+            if self.isFifteen(self.p2points): return P2res == "Fifteen"
+            if self.isThirty(self.p2points): return P2res == "Thirty"
+            if self.isForty(self.p2points): return P2res == "Forty"
+            return result == P1res + "-" + P2res
         
         if (self.p1points>self.p2points and self.p1points < 4):
-            if isThirty(p1points) return P1res = "Thirty"
-            if isForty(p1points) return P1res = "Forty"
-            if isFifteen(p2points) return P2res = "Fifteen"
-            if isThirty(p2points) return P2res = "Thirty"
-            return result = P1res + "-" + P2res
+            if self.isThirty(self.p1points): return P1res == "Thirty"
+            if self.isForty(self.p1points): return P1res == "Forty"
+            if self.isFifteen(self.p2points): return P2res == "Fifteen"
+            if self.isThirty(self.p2points): return P2res == "Thirty"
+            return result == P1res + "-" + P2res
         
         if (self.p2points>self.p1points and self.p2points < 4):
-            if isThirty(p2points) return P2res = "Thirty"
-            if isForty(p2points) return P2res = "Forty"
-            if isFifteen(p1points) return P1res = "Fifteen"
-            if isThirty(p1points) return P1res = "Thirty"
-            return result = P1res + "-" + P2res
+            if self.isThirty(self.p2points): return P2res == "Thirty"
+            if self.isForty(self.p2points): return P2res == "Forty"
+            if self.isFifteen(self.p1points): return P1res == "Fifteen"
+            if self.isThirty(self.p1points): return P1res == "Thirty"
+            return result == P1res + "-" + P2res
         
-        if (self.p1points > self.p2points and self.p2points >= 3) return result = "Advantage " + self.player1Name
-        if (self.p2points > self.p1points and self.p1points >= 3) return result = "Advantage " + self.player2Name
-        
-        if (self.p1points>=4 and self.p2points>=0 and (self.p1points-self.p2points)>=2) return result = "Win for " + self.player1Name
-        if (self.p2points>=4 and self.p1points>=0 and (self.p2points-self.p1points)>=2) return result = "Win for " + self.player2Name
+        if self.matchPointP1():
+            result = "Advantage " + self.player1Name
+
+        if self.matchPointP2():
+            result = "Advantage " + self.player2Name
+
+        if self.p1Win():
+            result = "Win for " + self.player1Name
+
+        if self.p2Win():
+            result = "Win for " + self.player2Name
         return result
     
+    def matchPointP1(self):
+        if self.p1points > self.p2points and self.p2points >= 3:
+            return True    
+
+    def matchPointP2(self):
+        if self.p2points > self.p1points and self.p1points >= 3:
+            return True
+
+    def p1Win(self):
+        if self.p1points >= 4 and self.p2points >= 0 and (self.p1points - self.p2points) >= 2:
+            return True
+
+    def p2Win(self):
+        if self.p2points >= 4 and self.p1points >= 0 and (self.p2points - self.p1points) >= 2:
+            return True
+
     def SetP1Score(self, number):
         for i in range(number):
             self.P1Score()
